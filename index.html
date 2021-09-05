@@ -22,16 +22,15 @@
             </div>
 
 
-            <h1 class="display-4" v-if="commandes.length > 0">Mes Produits commandés</h1>
+            <h2 class="display-4">Mes Produits commandés</h2><br>
             <div class="row">
-                <fiche-produit v-for="commande in commandes" v-bind:nom="commande" role="recap"></fiche-produit>
+                <fiche-produit class="name" v-for="commande in commandes" v-bind:nom="commande" role="recap"></fiche-produit>
             </div> 
 
 
- 
             <h1 v-bind:class="affichage" class="display-4">Produits de la boutique</h1>
             <div class="row">
-                <fiche-produit v-for="produit in produits" v-bind:nom="produit" v-on:commande-passee="commander" role="commande"></fiche-produit>
+                <fiche-produit class="name" v-for="produit in produits" v-bind:nom="produit" v-on:commande-passee="commander" role="commande"></fiche-produit>
             </div>
         </div>
     </div>
@@ -41,7 +40,7 @@
             template: ` 
              <div class="col-3">
                 <p class="jumbotron"> {{ nom }}<br> 
-                    <button class="btn btn-light" v-on:click="passer_commande(nom)">Commander</button>
+                    <button class="btn btn-dark" v-on:click="passer_commande(nom)" v-if="role == 'commande'">Commander</button>
                 </p>
             </div>
             `,
